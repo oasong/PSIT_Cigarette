@@ -1,5 +1,6 @@
 import pygal
 bar_chart = pygal.HorizontalBar()
+bar_chart.title = 'Number of Smoker\n      Jobs'
 bar_chart.add('คนงาน', 1361986)
 bar_chart.add('เกษตร, ประมง', 3715143)
 bar_chart.add('ผู้ปฏิบัติงานด้านความสามารถทางฝีมือ', 1185974)
