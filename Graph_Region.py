@@ -27,7 +27,7 @@ for i in range(2, 12):
 
 
 line_chart = pygal.Bar()
-line_chart.title = 'Browser usage evolution (in %)'
+line_chart.title = 'Static of Smoker sorted by Region & Education'
 line_chart.x_labels = map(str, level)
 
 line_chart.add('ทั่วราชอาณาจักร', allr)
