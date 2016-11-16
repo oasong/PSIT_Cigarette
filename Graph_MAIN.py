@@ -99,4 +99,37 @@ def job():
     line_chart.add('อีสาน', esan)
     line_chart.add('ใต้', south)
     line_chart.render_to_file('Graph_jobs.svg')
+    quit()
+
+def quit():
+    wb = load_workbook(filename = 'quit.xlsx')
+    sheet_ranges = wb['Sheet1']
+    level = []
+    form_a = []
+    form_b = []
+    form_c = []
+    form_d = []
+    form_e = []
+    for i in range(2, 8):
+        cell_a = 'A'+str(i)
+        cell_b = 'B'+str(i)
+        cell_c = 'C'+str(i)
+        cell_d = 'D'+str(i)
+        cell_e = 'E'+str(i)
+        cell_f = 'F'+str(i)
+        level.append(sheet_ranges[cell_a].value)
+        form_a.append(sheet_ranges[cell_b].value)
+        form_b.append(sheet_ranges[cell_c].value)
+        form_c.append(sheet_ranges[cell_d].value)
+        form_d.append(sheet_ranges[cell_e].value)
+        form_e.append(sheet_ranges[cell_f].value)
+    line_chart = pygal.HorizontalBar()
+    line_chart.title = 'Static of Smoker who Stop Smoking\nSorted by sex&age'
+    line_chart.x_labels = map(str, level)
+    line_chart.add('ครอบครัวขอร้อง', form_a)
+    line_chart.add('ประหยัดเงิน', form_b)
+    line_chart.add('การรณรงค์', form_c)
+    line_chart.add('สถานที่สูบไม่อำนวย', form_d)
+    line_chart.add('ป่วย', form_e)
+    line_chart.render_to_file('Graph_quit.svg')
 region()
