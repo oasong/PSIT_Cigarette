@@ -132,4 +132,30 @@ def quit():
     line_chart.add('สถานที่สูบไม่อำนวย', form_d)
     line_chart.add('ป่วย', form_e)
     line_chart.render_to_file('Graph_quit.svg')
+    smoke()
+
+def smoke():
+    gauge = pygal.SolidGauge(half_pie=True, inner_radius=0.70,
+        style=pygal.style.styles['default'](value_font_size=15))
+    gauge.title = 'Toxic in Smoke'
+
+    wb = load_workbook(filename = 'smoke.xlsx')
+    sheet_ranges = wb['Sheet1']
+    level = []
+    num = []
+    sumall = sheet_ranges['B16'].value
+    percent_formatter = lambda x: '{:.10g}%'.format(x)
+    gauge.value_formatter = percent_formatter
+    for i in range(1, 16):
+        cell_a = 'A'+str(i)
+        cell_c = 'C'+str(i)
+        level.append(sheet_ranges[cell_a].value)
+        num.append(float(sheet_ranges[cell_c].value))
+
+
+    for i in range(15):
+        gauge.add(level[i], [{'value': num[i], 'max_value': 100}])
+
+    gauge.render_to_file('Smoke.svg')
+
 region()
