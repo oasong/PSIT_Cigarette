@@ -187,5 +187,38 @@ def store():
     line_chart.add('แผงลอย', datae)
     line_chart.add('ต่างประเทศ', dataf)
     line_chart.render_to_file('Graph_store.svg')
+    idcard()
+def idcard():
+    wb = load_workbook(filename = 'id.xlsx')
+    sheet_ranges = wb['Sheet1']
+    region = []
+    datab = []
+    datac = []
+    datad = []
+    datae = []
+    dataf = []
+    for i in range(2, 4):
+        cella = 'A'+str(i)
+        cellb = 'B'+str(i)
+        cellc = 'C'+str(i)
+        celld = 'D'+str(i)
+        celle = 'E'+str(i)
+        cellf = 'F'+str(i)
+        region.append(sheet_ranges[cella].value)
+        datab.append(sheet_ranges[cellb].value)
+        datac.append(sheet_ranges[cellc].value)
+        datad.append(sheet_ranges[celld].value)
+        datae.append(sheet_ranges[celle].value)
+        dataf.append(sheet_ranges[cellf].value)
+
+    line_chart = pygal.StackedBar()
+    line_chart.title = 'Stactic of Seller who ask for ID card before sell a Cigarette'
+    line_chart.x_labels = map(str, region)
+    line_chart.add('กรุงเทพฯ', datab)
+    line_chart.add('กลาง(ไม่รวมกทม.)', datac)
+    line_chart.add('เหนือ', datad)
+    line_chart.add('ตะวันออกเฉียงเหนือ', datae)
+    line_chart.add('ใต้', dataf)
+    line_chart.render_to_file('Graph_askid.svg')
 
 region()
