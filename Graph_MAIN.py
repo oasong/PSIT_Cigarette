@@ -1,5 +1,5 @@
 """
-    Group Name: Oasong
+    Group Name: OASong
     Member 1.59070098 Paroot Satjawanit
            2.59070156 Vasanchai Prakobkij
     Program Name: Cigarette Analyze
@@ -151,11 +151,41 @@ def smoke():
         cell_c = 'C'+str(i)
         level.append(sheet_ranges[cell_a].value)
         num.append(float(sheet_ranges[cell_c].value))
-
-
     for i in range(15):
         gauge.add(level[i], [{'value': num[i], 'max_value': 100}])
-
     gauge.render_to_file('Smoke.svg')
+    store()
+
+def store():
+    wb = load_workbook(filename = 'store.xlsx')
+    sheet_ranges = wb['Sheet1']
+    age = []
+    datab = []
+    datac = []
+    datad = []
+    datae = []
+    dataf = []
+    for i in range(2, 6):
+        cella = 'A'+str(i)
+        cellb = 'B'+str(i)
+        cellc = 'C'+str(i)
+        celld = 'D'+str(i)
+        celle = 'E'+str(i)
+        cellf = 'F'+str(i)
+        age.append(sheet_ranges[cella].value)
+        datab.append(sheet_ranges[cellb].value)
+        datac.append(sheet_ranges[cellc].value)
+        datad.append(sheet_ranges[celld].value)
+        datae.append(sheet_ranges[celle].value)
+        dataf.append(sheet_ranges[cellf].value)
+    line_chart = pygal.HorizontalBar()
+    line_chart.title = 'Stactic of Store where sold Cigarette'
+    line_chart.x_labels = map(str, age)
+    line_chart.add('ร้านขายของชำ', datab)
+    line_chart.add('ร้านสะดวกซื้อ', datac)
+    line_chart.add('ร้านค้าส่ง', datad)
+    line_chart.add('แผงลอย', datae)
+    line_chart.add('ต่างประเทศ', dataf)
+    line_chart.render_to_file('Graph_store.svg')
 
 region()
