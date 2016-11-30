@@ -4,7 +4,9 @@
            2.59070156 Vasanchai Prakobkij
     Program Name: Cigarette Analyze
 """
+from pygal.style import Style
 from openpyxl import load_workbook
+from pygal.style import DarkStyle
 import pygal
 def region():
     wb = load_workbook(filename = 'region.xlsx')
@@ -30,7 +32,7 @@ def region():
         north.append(sheet_ranges[cell_e].value)
         esan.append(sheet_ranges[cell_f].value)
         south.append(sheet_ranges[cell_g].value)
-    line_chart = pygal.Dot()
+    line_chart = pygal.Dot(fill=True, interpolate='cubic', style=DarkStyle)
     line_chart.title = 'Static of Smoker sorted by Region & Education'
     line_chart.x_labels = map(str, level)
     line_chart.add('กรุงเทพฯ', ktm)
@@ -57,7 +59,7 @@ def age():
         never.append(sheet_ranges[cell_b].value)
         always.append(sheet_ranges[cell_c].value)
         sometimes.append(sheet_ranges[cell_d].value)
-    line_chart = pygal.HorizontalBar()
+    line_chart = pygal.HorizontalBar(fill=True, interpolate='cubic', style=DarkStyle)
     line_chart.title = 'Static of Smoker sorted by Age&Sex'
     line_chart.x_labels = map(str, level)
     line_chart.add('ไม่เคยสูบ', never)
@@ -90,7 +92,7 @@ def job():
         north.append(sheet_ranges[cell_e].value)
         esan.append(sheet_ranges[cell_f].value)
         south.append(sheet_ranges[cell_g].value)
-    line_chart = pygal.Bar()
+    line_chart = pygal.Bar(fill=True, interpolate='cubic', style=DarkStyle)
     line_chart.title = 'Static of Smoker sorted by jobs'
     line_chart.x_labels = map(str, jobs)
     line_chart.add('กรุงเทพมหานคร', ktm)
@@ -123,7 +125,7 @@ def quit():
         form_c.append(sheet_ranges[cell_d].value)
         form_d.append(sheet_ranges[cell_e].value)
         form_e.append(sheet_ranges[cell_f].value)
-    line_chart = pygal.HorizontalBar()
+    line_chart = pygal.HorizontalBar(fill=True, interpolate='cubic', style=DarkStyle)
     line_chart.title = 'Static of Smoker who Stop Smoking\nSorted by sex&age'
     line_chart.x_labels = map(str, level)
     line_chart.add('ครอบครัวขอร้อง', form_a)
@@ -136,7 +138,7 @@ def quit():
 
 def smoke():
     gauge = pygal.SolidGauge(half_pie=True, inner_radius=0.70,
-        style=pygal.style.styles['default'](value_font_size=15))
+        style=DarkStyle(value_font_size=15))
     gauge.title = 'Toxic in Smoke'
 
     wb = load_workbook(filename = 'smoke.xlsx')
@@ -153,7 +155,7 @@ def smoke():
         num.append(float(sheet_ranges[cell_c].value))
     for i in range(15):
         gauge.add(level[i], [{'value': num[i], 'max_value': 100}])
-    gauge.render_to_file('Smoke.svg')
+    gauge.render_to_file('Graph_smoke.svg')
     store()
 
 def store():
@@ -178,7 +180,7 @@ def store():
         datad.append(sheet_ranges[celld].value)
         datae.append(sheet_ranges[celle].value)
         dataf.append(sheet_ranges[cellf].value)
-    line_chart = pygal.HorizontalBar()
+    line_chart = pygal.HorizontalBar(fill=True, interpolate='cubic', style=DarkStyle)
     line_chart.title = 'Stactic of Store where sold Cigarette'
     line_chart.x_labels = map(str, age)
     line_chart.add('ร้านขายของชำ', datab)
@@ -211,7 +213,8 @@ def idcard():
         datae.append(sheet_ranges[celle].value)
         dataf.append(sheet_ranges[cellf].value)
 
-    line_chart = pygal.StackedBar()
+
+    line_chart = pygal.StackedBar(fill=True, interpolate='cubic', style=DarkStyle)
     line_chart.title = 'Stactic of Seller who ask for ID card before sell a Cigarette'
     line_chart.x_labels = map(str, region)
     line_chart.add('กรุงเทพฯ', datab)
