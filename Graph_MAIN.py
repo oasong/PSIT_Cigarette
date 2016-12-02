@@ -2,7 +2,9 @@
     Group Name: OASong
     Member 1.59070098 Paroot Satjawanit
            2.59070156 Vasanchai Prakobkij
+           3.59070064 Thanachart Amraikhing
     Program Name: Cigarette Analyze
+    Web: www.oasong.96.lt
 """
 from pygal.style import Style
 from openpyxl import load_workbook
@@ -226,7 +228,15 @@ def idcard():
         datae.append(sheet_ranges[celle].value)
         dataf.append(sheet_ranges[cellf].value)
     custom_style = Style(
-    colors=('#e2d81b', '#e21b1b', '#50e21b', '#1be2d5', '#2f1be2'))
+      background='transparent',
+    plot_background='transparent',
+    foreground='#53E89B',
+    foreground_strong='#53A0E8',
+    foreground_subtle='#630C0D',
+    opacity='.6',
+    opacity_hover='.9',
+    transition='400ms ease-in',
+    colors=('#FFFFFF', '#E21B1B', '#50e21b', '#1be2d5', '#2f1be2'))
     line_chart = pygal.StackedBar(fill=True, interpolate='cubic', style=DarkStyle)
     line_chart.title = 'Stactic of Seller who ask for ID card before sell a Cigarette'
     line_chart.x_labels = map(str, region)

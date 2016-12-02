@@ -1,0 +1,28 @@
+.fullscreen-bg{
+    background: url(bg3.jpg);
+    width: 100vw;
+    height: 100vh;
+}
+
+.setw_h{
+    width: 80%;
+    height: 80%;
+}
+
+.fullscreen-bg_index{
+    background: url(bg3.jpg);
+    width: 100%;
+    height: 100%;
+}
+
+.center_div {
+    padding-top: 450px;
+    text-align:center;
+}
+
+.center_vdo {
+    margin:auto;
+    padding-top: 50px;
+    text-align:center;
+    vertical-align:middle;
+}
