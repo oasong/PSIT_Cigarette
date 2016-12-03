@@ -11,6 +11,7 @@ from openpyxl import load_workbook
 from pygal.style import DarkStyle
 import pygal
 def region():
+    """Make a graph by use pygal to region.svg"""
     wb = load_workbook(filename = 'region.xlsx')
     sheet_ranges = wb['Sheet1']
     level = []
@@ -46,6 +47,7 @@ def region():
     age()
 
 def age():
+    """Make a graph by use pygal to age.svg"""
     wb = load_workbook(filename = 'ages.xlsx')
     sheet_ranges = wb['Sheet1']
     level = []
@@ -71,6 +73,7 @@ def age():
     job()
 
 def job():
+    """Make a graph by use pygal to job.svg"""
     wb = load_workbook(filename = 'jobs.xlsx')
     sheet_ranges = wb['Sheet1']
     jobs = []
@@ -106,6 +109,7 @@ def job():
     quit()
 
 def quit():
+    """Make a graph by use pygal to quit.svg"""
     wb = load_workbook(filename = 'quit.xlsx')
     sheet_ranges = wb['Sheet1']
     level = []
@@ -139,6 +143,7 @@ def quit():
     smoke()
 
 def smoke():
+    """Make a graph by use pygal to smoke.svg"""
     gauge = pygal.SolidGauge(half_pie=True, inner_radius=0.70,
         style=DarkStyle(value_font_size=15))
     gauge.title = 'Toxic in Smoke'
@@ -160,6 +165,7 @@ def smoke():
     store()
 
 def store():
+    """Make a graph by use pygal to store.svg"""
     wb = load_workbook(filename = 'store.xlsx')
     sheet_ranges = wb['Sheet1']
     age = []
@@ -193,6 +199,7 @@ def store():
     idcard()
 
 def idcard():
+    """Make a graph by use pygal to idcard.svg"""
     wb = load_workbook(filename = 'id.xlsx')
     sheet_ranges = wb['Sheet1']
     region = []
